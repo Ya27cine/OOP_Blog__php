@@ -7,7 +7,7 @@
 /**
  * 1. Récupération des articles
  */
-$articles = $articleModel->findAll();
+$articles = $articleModel->findAll("created_at DESC");
 
 /**
  * 2. Affichage
