@@ -32,7 +32,7 @@ $articles = $resultats->fetchAll();
  * 3. Affichage
  */
 $pageTitle = "Accueil";
-render("articles/index", compact('articles') );
+render("articles/index", compact('pageTitle','articles') );
 
 // ob_start();
 // require('templates/articles/index.html.php');
