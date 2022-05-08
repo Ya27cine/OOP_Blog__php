@@ -10,8 +10,12 @@
  * 
  * On va ensuite afficher l'article puis ses commentaires
  */
-require_once("libraries/database.php");
 require_once("libraries/utils.php");
+require_once("libraries/models/Article.php");
+require_once("libraries/models/Comment.php");
+
+$articleModel = new Article();
+$commentModel = new Comment();
 
 /**
  * 1. Récupération du param "id" et vérification de celui-ci
@@ -32,15 +36,19 @@ if (!$article_id) {
 /**
  * Récupération de l'article en question
  */
-$article =  findAnArticle( $article_id );
+$article =  $articleModel->find( $article_id );
 
 /**
  *  Récupération des commentaires de l'article en question
  */
-$commentaires =  findAllComments($article_id);
+$commentaires =  $commentModel->findAllByArticle($article_id);
 
 /**
  * 5. On affiche 
  */
 $pageTitle = $article['title'];
-render("articles/show",compact('pageTitle','article', 'article_id', 'commentaires') );
+render("articles/show",compact(
+        'pageTitle','article',
+        'article_id', 
+        'commentaires') 
+);

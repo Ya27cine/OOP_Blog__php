@@ -13,8 +13,12 @@
  * 
  * Et enfin on pourra rediriger l'utilisateur vers l'article en question
  */
-require_once("libraries/database.php");
 require_once("libraries/utils.php");
+require_once("libraries/models/Article.php");
+require_once("libraries/models/Comment.php");
+
+$articleModel = new Article();
+$commentModel = new Comment();
 
 
 /**
@@ -52,7 +56,7 @@ if (!$author || !$article_id || !$content) {
  * Ca nécessite une connexion à la base de données puis une requête qui va aller chercher l'article en question
  * Si rien ne revient, la personne se fout de nous.
  */
- $article = findAnArticle( $article_id );
+ $article = $articleModel ->find( $article_id );
 
 // Si rien n'est revenu, on fait une erreur
 if (! $article ) {
@@ -60,7 +64,11 @@ if (! $article ) {
 }
 
 // 3. Insertion du commentaire
-addOneComment( compact('author', 'content', 'article_id') );
+$commentModel->insert(compact(
+    'author',
+     'content', 
+     'article_id') 
+);
 
 // 4. Redirection vers l'article en question :
 redirect('article.php?id=' . $article_id);
