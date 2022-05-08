@@ -7,16 +7,17 @@
  * puis on va boucler dessus pour afficher chacun d'entre eux
  */
 
+ require_once("libraries/database.php");
+ require_once("libraries/utils.php");
+
+
 /**
  * 1. Connexion à la base de données avec PDO
  * Attention, on précise ici deux options :
  * - Le mode d'erreur : le mode exception permet à PDO de nous prévenir violament quand on fait une connerie ;-)
  * - Le mode d'exploitation : FETCH_ASSOC veut dire qu'on exploitera les données sous la forme de tableaux associatifs
  */
-$pdo = new PDO('mysql:host=127.0.0.1;dbname=blogpoo;charset=utf8', 'admin', 'root', [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-]);
+$pdo =   getPdo();
 
  
 /**
@@ -31,8 +32,10 @@ $articles = $resultats->fetchAll();
  * 3. Affichage
  */
 $pageTitle = "Accueil";
-ob_start();
-require('templates/articles/index.html.php');
-$pageContent = ob_get_clean();
+render("articles/index", compact('articles') );
 
-require('templates/layout.html.php');
+// ob_start();
+// require('templates/articles/index.html.php');
+// $pageContent = ob_get_clean();
+
+// require('templates/layout.html.php');
