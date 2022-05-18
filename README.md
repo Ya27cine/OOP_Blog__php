@@ -1,6 +1,6 @@
 # Basic Blog using PHP
 ### A. Description 
-In this basic PHP project, we created a Blog that implements the most important terms related to object oriented programming (OOP)!
+In this basic PHP project, we created a Blog that implements the most important terms related to OPP <b>(object oriented programming )</b> !
 ### B. Main Features :
 
 In this project, we aimed mainly to:
