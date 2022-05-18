@@ -1,7 +1,3 @@
 <?php
-
-require_once("libraries/autoload.php");
-
-$controllerArticle = new  Controllers\Article();
-$controllerArticle->index();
- 
+require_once("libraries/Kernel.php");
+Kernel::process();
