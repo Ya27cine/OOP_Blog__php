@@ -3,11 +3,7 @@
 namespace Controllers;
 
 require_once("libraries/utils.php");
-require_once("libraries/models/Article.php");
-require_once("libraries/models/Comment.php");
-require_once("libraries/controllers/AbstractController.php");
-
-
+require_once("libraries/autoload.php");
 
 class Article extends AbstractController{
     protected $modelName = \Models\Article::class;

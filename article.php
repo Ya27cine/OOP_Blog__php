@@ -10,7 +10,7 @@
  * 
  * On va ensuite afficher l'article puis ses commentaires
  */
-require_once("libraries/controllers/Article.php");
+require_once("libraries/autoload.php");
 $controllerArticle = new \Controllers\Article();
 $controllerArticle->show();
 
