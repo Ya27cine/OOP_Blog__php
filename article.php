@@ -14,8 +14,8 @@ require_once("libraries/utils.php");
 require_once("libraries/models/Article.php");
 require_once("libraries/models/Comment.php");
 
-$articleModel = new Article();
-$commentModel = new Comment();
+$articleModel = new \Models\Article();
+$commentModel = new \Models\Comment();
 
 /**
  * 1. Récupération du param "id" et vérification de celui-ci
