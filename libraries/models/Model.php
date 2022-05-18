@@ -1,14 +1,15 @@
 <?php 
 namespace Models;
 
-require_once("libraries/database.php");
+use Core\DataBase;
+
 abstract class Model{
     protected $pdo;
     protected $table;
 
     public function __construct()
     {
-        $this->pdo = getPdo();
+        $this->pdo = DataBase::getPdo();
     }
 
     function findAll(String $order = "" ){

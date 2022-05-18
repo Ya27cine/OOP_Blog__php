@@ -2,8 +2,7 @@
 
 namespace Controllers;
 
-require_once("libraries/utils.php");
-require_once("libraries/autoload.php");
+use Core\Http;
 
 class Comment extends AbstractController {
 
@@ -63,8 +62,7 @@ class Comment extends AbstractController {
         );
 
         // 4. Redirection vers l'article en question :
-        redirect('article.php?id=' . $article_id);
-
+        Http::redirect('article.php?id=' . $article_id);
     }
 
     public function delete(){
@@ -99,7 +97,7 @@ class Comment extends AbstractController {
          * 5. Redirection vers l'article en question
          */
 
-        redirect("article.php?id=" . $article_id);
+        Http::redirect("article.php?id=" . $article_id);
     }
 }
 
